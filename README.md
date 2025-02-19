@@ -1,1 +1,1 @@
-# Pok-Pack
+# PokéPack: Digital Pokémon Card Collector
