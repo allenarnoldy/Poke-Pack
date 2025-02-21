@@ -7,7 +7,7 @@ import {
 import {
   expressMiddleware
 } from '@apollo/server/express4';
-import { authenticateToken } from './services/auth.js';
+// import { authenticateToken } from './services/auth.js';
 import { typeDefs, resolvers } from './schemas/index.js';
 import db from './config/connection.js';
 import { fileURLToPath } from 'url';
@@ -34,9 +34,9 @@ const startApolloServer = async () => {
   app.use(express.json());
 
   app.use('/graphql', expressMiddleware(server as any,
-    {
-      context: authenticateToken as any
-    }
+    // {
+    //   context: authenticateToken as any
+    // }
   ));
 
   if (process.env.NODE_ENV === 'production') {
