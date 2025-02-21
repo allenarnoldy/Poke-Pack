@@ -1,5 +1,7 @@
 import UserModel from '../models/User.js';
 import { signToken } from '../services/auth.js';
+
+// code for selecting from a certain set.
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,12 +20,14 @@ interface Context {
 
 const resolvers = {
     Query: {
-        openSinglePack: async (_parent: any, _args: any, _context: any) => {
+        openSinglePack: async (_parent: any, args: any, _context: any) => {
             // redefine cards array
             // instead of loading from cards.json
-            // make a fetch call instead to pokemon ap
-        
-            const res = await fetch('https://api.pokemontcg.io/v2/cards?q=nationalPokedexNumbers:[1 TO 151]&pageSize=151', {
+            // make a fetch call instead to pokemon api
+            // should be args.selection, this IS NOT CORRECTLY IMPLEMENTED AT THE MOMENT D: 
+            const selectedSet=args.selection || "base1"
+            console.log(selectedSet)
+            const res = await fetch(`${process.env.POKEMON_TCG_API_BASE_URL}/cards?q=set.id:${selectedSet} supertype:pokemon`, {
                 headers: {
                     'X-Api-Key': process.env.POKEMON_API_KEY || '',
                 },
@@ -55,7 +59,7 @@ const resolvers = {
             // );
             
             
-            return "Hi"
+            return "Hi, hey"
         },
         
         removeCardFromBinder: async (_parent: any, _args: any, _context: any) => {
