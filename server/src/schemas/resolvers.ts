@@ -59,14 +59,14 @@ const resolvers = {
             // );
             
             
-            return "Hi, hey"
+            return "Hi, hey, hello"
         },
         
         removeCardFromBinder: async (_parent: any, _args: any, _context: any) => {
             return "Hey"
         },
 
-        addUser: async (_: any, { username, email, password }: { username: string, email: string, password: string }) => {
+        /* addUser: async (_: any, { username, email, password }: { username: string, email: string, password: string }) => {
             console.log('Received input:', { username, email, password });
             
             if (!username || !email || !password) {
@@ -108,7 +108,7 @@ const resolvers = {
                 console.error(err);
                 throw new Error('Error logging in');
             }
-        },
+        }, */
     },
 };
 
