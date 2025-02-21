@@ -1,18 +1,12 @@
 import { Schema, model, type Document } from 'mongoose';
-import bcrypt from 'bcrypt';
-
-// import schema from Book.js
-// import bookSchema from './Book.js';
-// import type { BookDocument } from './Book.js';
+import bcrypt from 'bcryptjs';
 
 export interface UserDocument extends Document {
-  id: string;
+  _id: string;
   username: string;
   email: string;
   password: string;
-//   savedBooks: BookDocument[];
   isCorrectPassword(password: string): Promise<boolean>;
-  bookCount: number;
 }
 
 const userSchema = new Schema<UserDocument>(
@@ -32,8 +26,6 @@ const userSchema = new Schema<UserDocument>(
       type: String,
       required: true,
     },
-    // set savedBooks to be an array of data that adheres to the bookSchema
-    // savedBooks: [bookSchema],
   },
   // set this to use virtual below
   {
@@ -57,11 +49,6 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password: string) {
   return await bcrypt.compare(password, this.password);
 };
-
-// when we query a user, we'll also get another field called `bookCount` with the number of saved books we have
-// userSchema.virtual('bookCount').get(function () {
-//   return this.savedBooks.length;
-// });
 
 const User = model<UserDocument>('User', userSchema);
 
