@@ -65,7 +65,7 @@ const resolvers = {
             // should be args.selection, this IS NOT CORRECTLY IMPLEMENTED AT THE MOMENT D: 
             const selectedSet=args.selection || "base1"
             console.log(selectedSet)
-            const res = await fetch(`https://api.pokemontcg.io/v2/cards?q=set.id:${selectedSet} supertype:pokemon`, {
+            const res = await fetch(`${process.env.POKEMON_TCG_API_BASE_URL}/cards?q=set.id:${selectedSet} supertype:pokemon`, {
                 headers: {
                     'X-Api-Key': process.env.POKEMON_API_KEY || '',
                 },
