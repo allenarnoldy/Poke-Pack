@@ -1,51 +1,48 @@
 import jwt from 'jsonwebtoken';
-import { GraphQLError } from 'graphql';
+import { AuthenticationError } from 'apollo-server-errors'; 
 import dotenv from 'dotenv';
-import { Request } from 'express';
+
 dotenv.config();
 
-interface JwtPayload {
+// Define User Payload Interface
+interface UserPayload {
+  email: string;
   _id: string;
-  username: string;
-  email: string,
 }
 
-export const authenticateToken = async ({req}: {req:Request}) => {
-  let token = req.headers.authorization || req.body.token || req.query.token;
-  console.log(process.env.JWT_SECRET_KEY);
+// Authenticate Token Middleware
+export const authenticateToken = ({ req }: { req: any }) => {
+  let token = req.body.token || req.query.token || req.headers.authorization;
+
   if (req.headers.authorization) {
-    token = token.split(' ').pop().trim();
+    token = req.headers.authorization.split(' ').pop()?.trim();
   }
 
-  if (!token) {
-    return req;
-  }
+  if (!token) return req; // No token provided, return the request object
 
-  // token = token.split(' ')[1];
-  // const secretKey = process.env.JWT_SECRET_KEY || '';
-  //console.log(secretKey);
-  // console.log(token);
   try {
-    const data : any = jwt.verify(token, process.env.JWT_SECRET_KEY || '', { maxAge: '1hr'});
-    // console.log(data);
-    req.user = data as JwtPayload
-   } catch (err) {
-    console.log(err)
-    throw new Error('Invalid token');
+    // Verify token and extract payload
+    const secretKey = process.env.JWT_SECRET_KEY;
+    if (!secretKey) throw new Error('JWT secret key is not defined');
+
+    const { data } = jwt.verify(token, secretKey, { maxAge: '2h' }) as { data: UserPayload };
+
+    return { ...req, user: data }; // Return new request object with user data
+  } catch (err) {
+    if (err instanceof Error) {
+      console.error('Invalid token:', err.message);
+    } else {
+      console.error('Invalid token: An unknown error occurred');
+    }
+    throw new AuthenticationError('Invalid token');
   }
-  return req;
 };
 
-export const signToken = (username: string, email: string, _id: unknown) => {
-  const payload = { username, email, _id };
-  const secretKey = process.env.JWT_SECRET_KEY || '';
+// Sign JWT Token
+export const signToken = (email: string, _id: string) => {
+  const secretKey = process.env.JWT_SECRET_KEY;
+  if (!secretKey) throw new Error('JWT secret key is not defined');
 
-  return jwt.sign(payload, secretKey, { expiresIn: '1h' });
-};
-
-export class AuthenticationError extends GraphQLError {
-  constructor(message: string) {
-    super(message, undefined, undefined, undefined, ['UNAUTHENTICATED']);
-    Object.defineProperty(this, 'name', { value: 'AuthenticationError' });
-  }
+  const payload: UserPayload = { email, _id };
+  return jwt.sign({ data: payload }, secretKey, { expiresIn: '2h' });
 };
