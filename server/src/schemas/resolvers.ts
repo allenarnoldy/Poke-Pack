@@ -10,7 +10,6 @@ interface User extends Document{
     _id: string;
     username: string;
     email: string;
-    savedBooks?: any[];
     isCorrectPassword: (password: string) => Promise<boolean>;
 }
 
@@ -92,23 +91,25 @@ const resolvers = {
             }
         },
 
-        login: async (_: any, { email, password }: { email: string, password: string }) => {
-            if (!email || !password) throw new Error('Email and password are required');
-
+        login: async (_: any, { username, password }: { username: string, password: string }) => {
+            if (!username || !password) throw new Error('Username and password are required');
+        
             try {
-                const user = await UserModel.findOne({ email }) as User | null; 
+                // Find the user by username, not email
+                const user = await UserModel.findOne({ username }) as User | null;
                 if (!user) throw new Error('User not found');
-
+        
                 const isValid = await user.isCorrectPassword(password);
                 if (!isValid) throw new Error('Invalid credentials');
-
+        
                 const token = signToken(user.email, user._id.toString());
                 return { token, user };
             } catch (err) {
                 console.error(err);
                 throw new Error('Error logging in');
             }
-        }, 
+        },
+        
     },
 };
 
