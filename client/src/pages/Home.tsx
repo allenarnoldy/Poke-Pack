@@ -1,11 +1,13 @@
+import Login from "../components/Login";
 import OpenPack from "../components/OpenPack";
 
 const Home = () => {
+    //TODO change loggedIn to a useState
+    const loggedIn = false;
     return (
         <>
-        {/* IF LOGIN IS TRUE */}
-        <OpenPack/>
-        {/*Else <Login/> */}
+        {/* Show the OpenPack component if logged in, otherwise login */}
+        {loggedIn?<OpenPack/>:<Login/>}
         </>
     );
 };

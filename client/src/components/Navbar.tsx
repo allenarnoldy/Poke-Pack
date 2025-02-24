@@ -1,40 +1,22 @@
 import { Link, useLocation } from 'react-router-dom'
 
 const Navbar = () => {
-  const currentPage = useLocation().pathname;
-
+  //const currentPage = useLocation().pathname;
+  // TODO Add conditional logic with useState for checking if logged in currently setting a local boolean for login to false
+  const loggedIn = true;
   return (
     <nav>
-      <h1>
-        <Link to='/' id='logo'>
-          PokePack!
-        </Link>
-      </h1>
-      <ul className='nav nav-tabs'>
-        <li className='nav-item'>
-          <h2>
-            <Link
-              to='/'
-              className={currentPage === '/' ? 'nav-link active' : 'nav-link'}
-            >
-              HOME
-            </Link>
-          </h2>
-        </li>
-        <li className='nav-item'>
-          <h2>
-            <Link
-              to='/Collection'
-              className={
-                currentPage === '/Collection' ? 'nav-link active' : 'nav-link'
-              }
-            >
-              COLLECTION
-            </Link>
-          </h2>
-        </li>
-      </ul>
-    </nav>
+      <Link to='/' id='logo'>
+        <img src='.\pokpak_logo.svg' alt='PokePack!' />
+      </Link>
+      {loggedIn ? (
+        <div className='menu'>
+          <Link to='/Collection'>COLLECTION </Link>
+        </div>
+      ) : (
+        <></>
+      )}
+    </nav >
   );
 };
 
