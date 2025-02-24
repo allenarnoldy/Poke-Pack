@@ -1,22 +1,38 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import LoginModal from './LoginModal';
 
 const Navbar = () => {
-  //const currentPage = useLocation().pathname;
-  // TODO Add conditional logic with useState for checking if logged in currently setting a local boolean for login to false
-  const loggedIn = true;
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => setModalVisible(true);
+  const closeModal = () => setModalVisible(false);
+
   return (
     <nav>
-      <Link to='/' id='logo'>
-        <img src='.\pokpak_logo.svg' alt='PokePack!' />
-      </Link>
-      {loggedIn ? (
-        <div className='menu'>
-          <Link to='/Collection'>COLLECTION </Link>
-        </div>
-      ) : (
-        <></>
-      )}
-    </nav >
+      <h1>
+        <Link to='/' id='logo'>
+          <img src='.\pokpak_logo.svg' alt='PokePack!' />
+        </Link>
+      </h1>
+      <ul className="nav nav-tabs">
+        <li className="nav-item">
+          <h2>
+            <Link to="/Collection" className="nav-link">
+              COLLECTION
+            </Link>
+          </h2>
+        </li>
+        <li className="nav-item">
+            <button onClick={openModal} className="nav-link">
+              Login / Sign Up
+            </button>
+        </li>
+      </ul>
+
+      {/* Modal */}
+      <LoginModal isOpen={modalVisible} onClose={closeModal} />
+    </nav>
   );
 };
 
