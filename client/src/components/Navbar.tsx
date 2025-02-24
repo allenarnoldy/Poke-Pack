@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import LoginModal from './LoginModal'; 
+import LoginModal from './LoginModal';
 
 const Navbar = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -11,18 +11,11 @@ const Navbar = () => {
   return (
     <nav>
       <h1>
-        <Link to="/" id="logo">
-          PokePack!
+        <Link to='/' id='logo'>
+          <img src='.\pokpak_logo.svg' alt='PokePack!' />
         </Link>
       </h1>
       <ul className="nav nav-tabs">
-        <li className="nav-item">
-          <h2>
-            <Link to="/" className="nav-link">
-              HOME
-            </Link>
-          </h2>
-        </li>
         <li className="nav-item">
           <h2>
             <Link to="/Collection" className="nav-link">
@@ -31,11 +24,9 @@ const Navbar = () => {
           </h2>
         </li>
         <li className="nav-item">
-          <h2>
             <button onClick={openModal} className="nav-link">
               Login / Sign Up
             </button>
-          </h2>
         </li>
       </ul>
 

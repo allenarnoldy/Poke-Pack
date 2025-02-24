@@ -14,7 +14,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
 
   return (
     isOpen && (
-      <div className="modal-overlay">
+      <div className="modal-overlay menubox">
         <div className="modal-content">
           <h2>{isSignup ? 'Sign Up' : 'Login'}</h2>
           {isSignup ? (

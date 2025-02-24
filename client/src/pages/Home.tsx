@@ -1,13 +1,23 @@
+//import LoginModal from "../components/LoginModal";
+
 import OpenPack from "../components/OpenPack";
 
 const Home = () => {
-    return (
-        <>
-        {/* IF LOGIN IS TRUE */}
-        <OpenPack/>
-        {/*Else <Login/> */}
-        </>
-    );
+  //TODO change loggedIn to a useState
+  const loggedIn = false;
+  return (
+    <>
+      {/* Show the OpenPack component if logged in, otherwise pitchpage */}
+      {loggedIn ? <OpenPack /> : <>
+        <div className="splash-container">
+          <div className='splash-image'>
+            <img src='./imgSplash.png' alt='Choose Your Pack!' />
+            <h2>All your favorites, just a PokePack away!</h2>
+          </div>
+        </div>
+      </>}
+    </>
+  );
 };
 
 export default Home;
