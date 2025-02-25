@@ -21,35 +21,39 @@ const Navbar = () => {
           <img src='.\pokpak_logo.svg' alt='PokePack!'/>
         </Link>
       </h1>
-      <ul className="nav nav-tabs">
-        <li className="nav-item">
-          <h2>
-            <Link to="/Collection" className="nav-link">
-              COLLECTION
-            </Link>
-          </h2>
-        </li>
+
+      {/* If logged in, show Binder */}
+      <div className="nav-links">
+        {Auth.loggedIn() && (
+          <div className="nav-item">
+            <h2>
+              <Link to="/Collection" className="nav-link">
+                Binder
+              </Link>
+            </h2>
+          </div>
+        )}
 
         {Auth.loggedIn() ? (
           // If logged in, show Logout button
-          <li className="nav-item">
+          <div className="nav-item">
             <h2>
               <button onClick={handleLogout} className="nav-link">
                 Logout
               </button>
             </h2>
-          </li>
+          </div>
         ) : (
           // If not logged in, show Login / Sign Up button
-          <li className="nav-item">
+          <div className="nav-item">
             <h2>
               <button onClick={openModal} className="nav-link">
                 Login / Sign Up
               </button>
             </h2>
-          </li>
+          </div>
         )}
-      </ul>
+      </div>
 
       {/* Modal */}
       <LoginModal isOpen={modalVisible} onClose={closeModal} />
