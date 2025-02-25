@@ -107,3 +107,11 @@ nav ul {
 .form-group {
     padding: 15px;
 }
+
+/* POKEMON CARD */
+.pokemon-card:hover + .hover-data {
+    display: block;
+}
+.hover-data {
+    display: none;
+}
