@@ -24,3 +24,35 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const GET_CARDS = gql`
+  query GetCards {
+    openSinglePack {
+      id
+      name
+      level
+      types
+      evolvesFrom
+      rarity
+      imageUrl
+    }
+  }
+`;
+
+export const DELETE_CARD = gql`
+  mutation removeCardFromBinder($cardId: ID!) {
+    removeCardFromBinder(cardId: $cardId) {
+      _id
+      username
+      savedCards {
+        id
+        name
+        level
+        types
+        evolvesFrom
+        rarity
+        imageUrl
+      }
+    }
+  }
+`;
