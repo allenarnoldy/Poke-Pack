@@ -18,17 +18,10 @@ const Navbar = () => {
     <nav>
       <h1>
         <Link to="/" id="logo">
-          PokePack!
+          <img src='.\pokpak_logo.svg' alt='PokePack!'/>
         </Link>
       </h1>
       <ul className="nav nav-tabs">
-        <li className="nav-item">
-          <h2>
-            <Link to="/" className="nav-link">
-              HOME
-            </Link>
-          </h2>
-        </li>
         <li className="nav-item">
           <h2>
             <Link to="/Collection" className="nav-link">
