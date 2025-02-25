@@ -18,11 +18,11 @@ const typeDefs = gql`
   }
 
   type Card {
-    id: ID
+    _id: ID!
     name: String
     level: String
     types: [String]
-    evolvesFrom: String
+    setName: String
     rarity: String
     imageUrl: String
   }

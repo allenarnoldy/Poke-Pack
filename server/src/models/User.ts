@@ -6,8 +6,51 @@ export interface UserDocument extends Document {
   username: string;
   email: string;
   password: string;
+  binder: Schema.Types.ObjectId[]
   isCorrectPassword(password: string): Promise<boolean>;
 }
+interface CardDocument extends Document {
+  name: string;
+  image: string;
+  rarity : string;
+  pokemonType: string;
+  cardSet: string;
+  level: number;
+}
+
+const cardSchema = new Schema<CardDocument>(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+      required: true,
+    },
+    rarity: {
+      type: String,
+      required: true, 
+    },
+    pokemonType: {
+      type: String,
+      required: true,
+    },
+    cardSet: {
+      type: String,
+      required: true,
+    },
+    level: {
+      type: Number,
+      required: true,
+    }
+
+  },
+  {
+    toJSON: { getters: true },
+    toObject: { getters: true },
+  }
+)
 
 const userSchema = new Schema<UserDocument>(
   {
@@ -26,6 +69,8 @@ const userSchema = new Schema<UserDocument>(
       type: String,
       required: true,
     },
+    binder: [cardSchema]
+    
   },
   // set this to use virtual below
   {

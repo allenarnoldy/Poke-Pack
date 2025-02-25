@@ -28,11 +28,11 @@ export const ADD_USER = gql`
 export const GET_CARDS = gql`
   query GetCards {
     openSinglePack {
-      id
+      _id
       name
       level
       types
-      evolvesFrom
+      setName
       rarity
       imageUrl
     }
@@ -45,11 +45,11 @@ export const DELETE_CARD = gql`
       _id
       username
       savedCards {
-        id
+        _id
         name
         level
         types
-        evolvesFrom
+        setName
         rarity
         imageUrl
       }

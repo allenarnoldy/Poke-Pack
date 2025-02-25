@@ -26,6 +26,8 @@ const resolvers = {
             // should be args.selection, this IS NOT CORRECTLY IMPLEMENTED AT THE MOMENT D: 
             const selectedSet=args.selection || "base1"
             console.log(selectedSet)
+            // REMEMBER TO CHANGE BACK TO .ENV 
+            console.log(process.env.POKEMON_TCG_API_BASE_URL)
             const res = await fetch(`${process.env.POKEMON_TCG_API_BASE_URL}/cards?q=set.id:${selectedSet} supertype:pokemon`, {
                 headers: {
                     'X-Api-Key': process.env.POKEMON_API_KEY || '',
@@ -35,12 +37,21 @@ const resolvers = {
             console.log(cards);
             const randomCards = [];
 
-            for (let i = 0; i < 10; i++) {
-                const randomCard = cards.data[Math.floor(Math.random() * cards.data.length)];
+            for (let i = 0; i < 5; i++) {
+                const cardData = cards.data[Math.floor(Math.random() * cards.data.length)];
+                const randomCard = {
+                    name: cardData.name,
+                    level: cardData.level,
+                    types: cardData.types || [],
+                    setName: cardData.set.name,
+                    rarity: cardData.rarity,
+                    imageUrl: cardData.images.large,
+                }
                 randomCards.push(randomCard);
             }
             
             return randomCards;
+    
         },
 
         me: async (_: any, __: any, { user }: Context) => {
@@ -58,7 +69,7 @@ const resolvers = {
             // );
             
             
-            return "Hi, hey,"
+            return "Hi, hey, wassup"
         },
         
         removeCardFromBinder: async (_parent: any, _args: any, _context: any) => {
@@ -117,3 +128,46 @@ const resolvers = {
 
 
 export default resolvers;
+
+// data[x].id
+// data[x].name
+// data[x].level
+// data[x].types[0]
+// data[x].set.name (do we want the id too?)
+// data[x].rarity
+// data[x].images.large 
+
+
+// "data": [
+//     {
+//         "id": "base1-1",
+//         "name": "Alakazam",
+//         "level": "42",
+//         "types": [
+//             "Psychic"
+//         ],
+//         "set": {
+//             "id": "base1",
+//             "name": "Base",
+//             "series": "Base",
+//             "printedTotal": 102,
+//             "total": 102,
+//             "legalities": {
+//                 "unlimited": "Legal"
+//             },
+//             "ptcgoCode": "BS",
+//             "releaseDate": "1999/01/09",
+//             "updatedAt": "2022/10/10 15:12:00",
+//             "images": {
+//                 "symbol": "https://images.pokemontcg.io/base1/symbol.png",
+//                 "logo": "https://images.pokemontcg.io/base1/logo.png"
+//             }
+//         },
+//         "number": "1",
+//         "rarity": "Rare Holo",
+//         "images": {
+//             "small": "https://images.pokemontcg.io/base1/1.png",
+//             "large": "https://images.pokemontcg.io/base1/1_hires.png"
+//         },
+//       
+//       
