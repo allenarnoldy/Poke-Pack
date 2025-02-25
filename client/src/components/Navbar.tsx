@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'; 
 import { useState } from 'react';
 import LoginModal from './LoginModal'; 
-import Auth from '../utils/auth'; // Import the Auth utility
+import Auth from '../utils/auth'; 
+import '../App.css';
 
 const Navbar = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -16,11 +17,11 @@ const Navbar = () => {
 
   return (
     <nav>
-      <h1>
+      <div>
         <Link to="/" id="logo">
           <img src='.\pokpak_logo.svg' alt='PokePack!'/>
         </Link>
-      </h1>
+      </div>
 
       {/* If logged in, show Binder */}
       <div className="nav-links">
