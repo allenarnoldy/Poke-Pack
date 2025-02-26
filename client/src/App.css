@@ -171,7 +171,41 @@ button:hover {
 }
 
 
-
+/* BOOSTER PACK */
+.packCard {
+    position: absolute;
+}
+.packCard .cardImage{
+    width: 18em;
+}
+.booster {
+    transition: 0.5s ease-in-out;
+}
+.booster :nth-child(1) {
+    translate: -300px; 
+    rotate: 0;
+    z-index: 1;
+}
+.booster :nth-child(2) {
+    translate: -150px; 
+    rotate: 0;
+    z-index: 2;
+}
+.booster :nth-child(3) {
+    translate: 0px; 
+    rotate: 0;
+    z-index: 3;
+}
+.booster :nth-child(4) {
+    translate: 150px; 
+    rotate: 0;
+    z-index: 2;
+}
+.booster :nth-child(5) {
+    translate: 300px; 
+    rotate: 0;
+    z-index: 1;
+}
 
 
 /* POKEMON CARD */

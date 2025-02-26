@@ -1,3 +1,6 @@
+import DisplayBooster from "./DisplayBooster";
+
+
 const OpenPack = () => {
     function handleSubmit(event: any) {
         event.preventDefault();
@@ -12,8 +15,6 @@ const OpenPack = () => {
     return (
         <>
             <div className="pack-container">
-                {/*TODO 'submit-pack' is possibly going to be a component for the pack itself.*/}
-                <div id="submit-pack">{}</div>
                 <form method="post" onSubmit={handleSubmit}>
                     <h1>TIME TO CRACK A PACK</h1>
                     <label>
@@ -27,6 +28,7 @@ const OpenPack = () => {
                     </label>
                     <button type="submit">Submit</button>
                 </form>
+                
             </div>
         </>
     );
