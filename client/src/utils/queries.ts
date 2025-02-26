@@ -9,7 +9,7 @@ export const LOGIN_USER = gql`
         name
         level
         types
-        evolvesFrom
+        setName
         rarity
         imageUrl
         }

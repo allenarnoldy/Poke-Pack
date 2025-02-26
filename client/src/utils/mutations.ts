@@ -32,7 +32,7 @@ export const GET_CARDS = gql`
       name
       level
       types
-      evolvesFrom
+      setName
       rarity
       imageUrl
     }
@@ -49,7 +49,7 @@ export const DELETE_CARD = gql`
         name
         level
         types
-        evolvesFrom
+        setName
         rarity
         imageUrl
       }
