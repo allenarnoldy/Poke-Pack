@@ -22,7 +22,7 @@ const typeDefs = gql`
     name: String
     level: String
     types: [String]
-    evolvesFrom: String
+    setName: String
     rarity: String
     imageUrl: String
   }

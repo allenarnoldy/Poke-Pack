@@ -6,6 +6,7 @@ export interface UserDocument extends Document {
   username: string;
   email: string;
   password: string;
+  binder: Schema.Types.ObjectId[];
   isCorrectPassword(password: string): Promise<boolean>;
 }
 
@@ -26,6 +27,12 @@ const userSchema = new Schema<UserDocument>(
       type: String,
       required: true,
     },
+    binder: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Card',
+      }
+    ]
   },
   // set this to use virtual below
   {
