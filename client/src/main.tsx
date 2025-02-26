@@ -4,6 +4,7 @@ import App from './App.jsx'
 import Home from './pages/Home.tsx'
 import Collection from './pages/Collection.tsx'
 import ErrorPage from './pages/ErrorPage.tsx'
+import DisplayBooster from './components/DisplayBooster.tsx'
 
 const router = createBrowserRouter([
   {
@@ -14,10 +15,11 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />
-      }, {
+      }, 
+      {
         path: '/Collection',
         element: <Collection />
-      }
+      },
     ]
   }
 ])
