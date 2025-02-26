@@ -1,6 +1,7 @@
 import Auth from '../utils/auth';
 import OpenPack from "../components/OpenPack";
 import DisplayBooster from '../components/DisplayBooster';
+import Collection from './Collection';
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
         </div>
       ) : (
         <div className="splash-container">
-          <DisplayBooster />
+          <Collection />
           <div className="splash-content">
             <h2>All your favorites, just a PokéPack away!</h2>
             <img src='./imgSplash.png' alt='Choose Your Pack!' className="splash-image" />
