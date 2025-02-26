@@ -1,8 +1,8 @@
 import UserModel from '../models/User.js';
 import { signToken } from '../services/auth.js';
-
 // code for selecting from a certain set.
 import dotenv from 'dotenv';
+import { Card } from '../models/index.js';
 
 dotenv.config();
 
@@ -20,26 +20,21 @@ interface Context {
 const resolvers = {
     Query: {
         openSinglePack: async (_parent: any, args: any, _context: any) => {
-            // redefine cards array
-            // instead of loading from cards.json
-            // make a fetch call instead to pokemon api
-            // should be args.selection, this IS NOT CORRECTLY IMPLEMENTED AT THE MOMENT D: 
             const selectedSet=args.selection || "base1"
             console.log(selectedSet)
-            const res = await fetch(`${process.env.POKEMON_TCG_API_BASE_URL}/cards?q=set.id:${selectedSet} supertype:pokemon`, {
-                headers: {
-                    'X-Api-Key': process.env.POKEMON_API_KEY || '',
-                },
-            });
-            const cards = await res.json();
-            console.log(cards);
-            const randomCards = [];
 
+            const cards = await Card.find({ "set.id": selectedSet, "supertype": "pokemon" });
+
+            if (!cards || cards.length === 0) {
+                throw new Error(`No cards found for set ${selectedSet}`);
+            }
+
+            const randomCards = [];
             for (let i = 0; i < 10; i++) {
-                const randomCard = cards.data[Math.floor(Math.random() * cards.data.length)];
+                const randomCard = cards[Math.floor(Math.random() * cards.length)];
                 randomCards.push(randomCard);
             }
-            
+
             return randomCards;
         },
 
@@ -51,18 +46,22 @@ const resolvers = {
 
     Mutation: {
         saveCardToBinder: async (_parent: any, _args: any, _context: any) => {
-            // const updateUser = await User.findOneAndUpdate(
-            //     { _id: _args.userId },
-            //     { $push: { cards: _args.cardId } },
-            //     { new: true }
-            // );
+            const updateUser = await UserModel.findOneAndUpdate(
+                { _id: _args.userId },
+                { $push: { cards: _args.cardId } },
+                { new: true }
+            );
+            return updateUser;
             
-            
-            return "Hi, hey,"
         },
         
         removeCardFromBinder: async (_parent: any, _args: any, _context: any) => {
-            return "Hey"
+            const updateUser = await UserModel.findOneAndUpdate(
+                { _id: _args.userId },
+                { $pull: { cards: _args.cardId } },
+                { new: true }
+            );
+            return updateUser;
         },
 
         addUser: async (_: any, { username, email, password }: { username: string, email: string, password: string }) => {
