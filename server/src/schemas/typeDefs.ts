@@ -3,7 +3,7 @@ import { gql } from 'apollo-server-express';
 const typeDefs = gql`
   type Query {
     me: User
-    openSinglePack: [Card]
+    openSinglePack(setName: String): [Card]
   }
 
   type User {
@@ -18,7 +18,6 @@ const typeDefs = gql`
   }
 
   type Card {
-    id: ID
     name: String
     level: String
     types: [String]

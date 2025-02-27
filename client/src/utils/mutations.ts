@@ -25,10 +25,9 @@ export const ADD_USER = gql`
   }
 `;
 
-export const GET_CARDS = gql`
+export const GET_SINGLE_PACK = gql`
   query GetCards {
     openSinglePack {
-      id
       name
       level
       types

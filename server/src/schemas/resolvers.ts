@@ -20,17 +20,17 @@ interface Context {
 const resolvers = {
     Query: {
         openSinglePack: async (_parent: any, args: any, _context: any) => {
-            const selectedSet=args.selection || "base1"
+            const selectedSet=args.setName || 151;
             console.log(selectedSet)
 
-            const cards = await Card.find({ "set.id": selectedSet, "supertype": "pokemon" });
+            const cards = await Card.find({ "setName": selectedSet });
 
             if (!cards || cards.length === 0) {
                 throw new Error(`No cards found for set ${selectedSet}`);
             }
 
             const randomCards = [];
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 const randomCard = cards[Math.floor(Math.random() * cards.length)];
                 randomCards.push(randomCard);
             }
