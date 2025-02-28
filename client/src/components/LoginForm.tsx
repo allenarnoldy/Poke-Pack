@@ -36,6 +36,7 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
 
       if (data) {
         Auth.login(data.login.token);
+        localStorage.setItem('userId', data.login.user._id);
         handleModalClose();
       }
     } catch (err) {
