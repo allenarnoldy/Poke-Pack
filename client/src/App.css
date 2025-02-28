@@ -12,7 +12,8 @@ body {
 /* NAVIGATION BAR */
 nav {
     position: sticky;
-    top: 0; /* Keeps the navbar at the top */
+    top: 0;
+    /* Keeps the navbar at the top */
     display: flex;
     justify-content: space-between;
     padding-left: 15px;
@@ -20,8 +21,10 @@ nav {
     background-color: #F44336;
     box-shadow: 0 10px 10px black;
     align-items: center;
-    height: 150px; /* Adjust as per your navbar height */
-    z-index: 10; /* Ensures navbar stays on top */
+    height: 150px;
+    /* Adjust as per your navbar height */
+    z-index: 10;
+    /* Ensures navbar stays on top */
 }
 
 nav h1 {
@@ -29,10 +32,12 @@ nav h1 {
 }
 
 .nav-slogan {
-    font-size: 3rem; /* Bigger font size for the slogan */
+    font-size: 3rem;
+    /* Bigger font size for the slogan */
     color: white;
     font-weight: bold;
-    margin-right: 15px; /* Add space between slogan and logo */
+    margin-right: 15px;
+    /* Add space between slogan and logo */
 }
 
 /* Navigation links container */
@@ -56,7 +61,8 @@ nav h1 {
     color: black;
     padding: 8px 16px;
     border-radius: 5px;
-    transition: color 0.3s ease; /* Only transition the text color */
+    transition: color 0.3s ease;
+    /* Only transition the text color */
 }
 
 /* Hover effect on links */
@@ -82,9 +88,9 @@ nav h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     background-color: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
+    margin-top: 15rem;
 }
 
 /* Modal Content */
@@ -139,21 +145,26 @@ button:hover {
 .splash-container {
     position: relative;
     background-image: url('./background.jpeg');
-    background-size: cover; /* Ensures the image covers the entire container */
-    background-position: center; /* Centers the image */
-    min-height: calc(100vh - 150px); /* Makes the container take full height minus the navbar height */
-    padding-top: 150px; /* Adds space to avoid covering navbar */
+    background-size: cover;
+    /* Ensures the image covers the entire container */
+    background-position: center;
+    /* Centers the image */
+    min-height: calc(100vh - 150px);
+    /* Makes the container take full height minus the navbar height */
+    padding-top: 150px;
+    /* Adds space to avoid covering navbar */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white; /* Optional: Adjust text color to make it more readable on the background */
-    z-index: 1; /* Ensures it stays below the navbar */
+    color: white;
+    z-index: 1;
 }
 
 .splash-content {
     text-align: center;
-    z-index: 1; /* Keeps content above the background */
-    background-color: rgba(0, 0, 0, 0.5); /* Optional: Adds transparency to make text more readable */
+    z-index: 1;
+    /* Keeps content above the background */
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
 }
@@ -165,71 +176,71 @@ button:hover {
 
 .logo-container {
     position: absolute;
-    top: 60px; /* Adjust based on navbar height */
+    top: 60px;
+    /* Adjust based on navbar height */
     left: 50%;
     transform: translateX(-50%);
-    z-index: 10; /* Ensures it stays above other content */
-  }
-  
-  .logo {
-    width: 200px; /* Adjust as needed */
+}
+
+.logo {
+    width: 200px;
+    /* Adjust as needed */
     height: 200px;
     border-radius: 50%;
     object-fit: cover;
-  }
-  
-/* RESPONSIVE DESIGN */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        /* Stack elements vertically on smaller screens */
-        align-items: flex-start;
-        /* Align left */
-    }
-
-    .nav-links {
-        width: 100%;
-        /* Full width for the links */
-        justify-content: flex-start;
-        /* Align to the left */
-        margin-top: 10px;
-        /* Space between logo and links */
-    }
 }
 
+.home-logged-in {
+    padding: 30px 0px 0px 20px;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.binder-header {
+    padding: 30px 0px 0px 20px;
+    font-size: 30px;
+    margin-bottom: 50px;
+}
 
 /* BOOSTER PACK */
 .packCard {
     position: absolute;
 }
-.packCard .cardImage{
+
+.packCard .cardImage {
     width: 18em;
 }
+
 .booster {
     transition: 0.5s ease-in-out;
 }
+
 .booster :nth-child(1) {
-    translate: -300px; 
+    translate: -300px;
     rotate: 0;
     z-index: 1;
 }
+
 .booster :nth-child(2) {
-    translate: -150px; 
+    translate: -150px;
     rotate: 0;
     z-index: 2;
 }
+
 .booster :nth-child(3) {
-    translate: 0px; 
+    translate: 0px;
     rotate: 0;
     z-index: 3;
 }
+
 .booster :nth-child(4) {
-    translate: 150px; 
+    translate: 150px;
     rotate: 0;
     z-index: 2;
 }
+
 .booster :nth-child(5) {
-    translate: 300px; 
+    translate: 300px;
     rotate: 0;
     z-index: 1;
 }
@@ -240,13 +251,16 @@ button:hover {
     width: 60%;
     display: flex;
 }
+
 .pokemon-card {
     position: relative;
     filter: brightness(80%);
 }
+
 .pokemon-card:hover {
     filter: brightness(1);
 }
+
 .pokemon-card:hover+.hover-data {
     position: absolute;
     width: 200px;
@@ -265,11 +279,10 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-color: #f4f7fa;
     padding: 20px;
+    margin-top: 30rem;
 }
-  
+
 form {
     background: #f0eded;
     border-radius: 8px;
@@ -285,9 +298,9 @@ form {
     font-weight: bolder;
     color: #040404;
     margin-bottom: 20px;
-    text-transform: uppercase; 
+    text-transform: uppercase;
 }
-  
+
 .pack-list {
     font-size: 16px;
     color: #555555;
@@ -299,13 +312,13 @@ form {
     margin-bottom: 20px;
     cursor: pointer;
 }
-  
+
 .pack-list:hover {
     border-color: #777777;
 }
-  
+
 .pack-button {
-    background-color: #1b65db; 
+    background-color: #1b65db;
     color: white;
     padding: 12px 25px;
     border: none;
@@ -314,7 +327,33 @@ form {
     transition: background-color 0.3s ease;
     width: 100%;
 }
-  
+
 .pack-button:hover {
     background-color: #f70202;
+}
+
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-slogan {
+        font-size: 2rem;
+    }
+
+    .logo {
+        width: 120px;
+        height: 120px;
+    }
 }

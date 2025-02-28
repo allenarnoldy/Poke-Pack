@@ -8,8 +8,8 @@ const Home = () => {
     <>
       {/* Show the OpenPack component if logged in, otherwise the landing page */}
       {Auth.loggedIn() ? (
-        <div className="home-logged-in">
-          <h1>Welcome Back, Collector!</h1>
+        <div>
+          <h1 className="home-logged-in">Welcome Back, Collector!</h1>
           <OpenPack />
         </div>
       ) : (
