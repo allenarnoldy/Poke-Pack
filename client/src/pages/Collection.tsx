@@ -46,7 +46,7 @@ const cardArray = [
 const Collection = () => {
     return (
         <>
-            <h1>Your Binder</h1>
+            <h1 className="binder-header">Your Binder</h1>
             <div className="binder">
                 {
                     cardArray.map(function (card: any) {
