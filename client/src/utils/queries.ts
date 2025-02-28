@@ -15,6 +15,18 @@ export const LOGIN_USER = gql`
         }
     _id
     username
-}
-    `;
+    }`;
+
+export const OPEN_SINGLE_PACK = gql`
+  query GetCards($setName: String!) {
+    openSinglePack(setName: $setName) {
+        types
+        setName
+        rarity
+        name
+        level
+        imageUrl
+    }
+  }
+`;
 

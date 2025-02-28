@@ -19,17 +19,19 @@ export const authenticateToken = ({ req }: { req: any }) => {
   }
 
   if (!token) return req; // No token provided, return the request object
-
+  console.log(token);
   try {
     // Verify token and extract payload
     const secretKey = process.env.JWT_SECRET_KEY;
+    console.log(secretKey);
     if (!secretKey) throw new Error('JWT secret key is not defined');
 
     const { data } = jwt.verify(token, secretKey, { maxAge: '2h' }) as { data: UserPayload };
-
+    
     return { ...req, user: data }; // Return new request object with user data
-  } catch (err) {
+    } catch (err) {
     if (err instanceof Error) {
+      console.log(process.env.JWT_SECRET_KEY);
       console.error('Invalid token:', err.message);
     } else {
       console.error('Invalid token: An unknown error occurred');
