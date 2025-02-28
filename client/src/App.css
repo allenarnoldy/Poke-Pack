@@ -209,8 +209,24 @@ button:hover {
 
 
 /* POKEMON CARD */
+.binder {
+    width: 60%;
+    display: flex;
+}
+.pokemon-card {
+    position: relative;
+    filter: brightness(80%);
+}
+.pokemon-card:hover {
+    filter: brightness(1);
+}
 .pokemon-card:hover+.hover-data {
+    position: absolute;
+    width: 200px;
+    left: 150px;
+    top: 0px;
     display: block;
+    z-index: 100;
 }
 
 .hover-data {
