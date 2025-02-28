@@ -1,6 +1,7 @@
 import { Schema, model, type Document } from 'mongoose';
 
 export interface CardDocument extends Document {
+  id: Schema.Types.ObjectId;
   name: string;
   level: string;
   types: string[];
@@ -12,6 +13,10 @@ export interface CardDocument extends Document {
 
 const cardSchema = new Schema<CardDocument>(
   {
+    id: {
+      type: Schema.Types.ObjectId,
+      index: true,
+    },
     name: {
       type: String,
       required: true,

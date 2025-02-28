@@ -34,7 +34,7 @@ const resolvers = {
                 const randomCard = cards[Math.floor(Math.random() * cards.length)];
                 randomCards.push(randomCard);
             }
-
+            console.log("All the cards!", randomCards);
             return randomCards;
         },
 
@@ -46,9 +46,10 @@ const resolvers = {
 
     Mutation: {
         saveCardToBinder: async (_parent: any, _args: any, _context: any) => {
+            
             const updateUser = await UserModel.findOneAndUpdate(
                 { _id: _args.userId },
-                { $push: { cards: _args.cardId } },
+                { $push: { cards: _args.cardID } },
                 { new: true }
             );
             return updateUser;

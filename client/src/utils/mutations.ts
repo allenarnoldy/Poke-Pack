@@ -55,3 +55,21 @@ export const DELETE_CARD = gql`
     }
   }
 `;
+
+export const SAVE_CARD = gql`
+  mutation saveCardToBinder($cardId: ID!) {
+    saveCardToBinder(cardID: $cardId) {
+      _id
+      username
+      savedCards {
+        id
+        name
+        level
+        types
+        setName
+        rarity
+        imageUrl
+      }
+    }
+  }
+`;

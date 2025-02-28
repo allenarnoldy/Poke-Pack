@@ -5,7 +5,7 @@ export const LOGIN_USER = gql`
     cardCount
     email
     savedCards {
-        id
+        _id
         name
         level
         types
@@ -20,6 +20,7 @@ export const LOGIN_USER = gql`
 export const OPEN_SINGLE_PACK = gql`
   query GetCards($setName: String!) {
     openSinglePack(setName: $setName) {
+        _id
         types
         setName
         rarity
