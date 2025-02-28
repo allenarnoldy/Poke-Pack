@@ -28,7 +28,7 @@ const OpenPack = () => {
         // TODO use 'selectedPack' from submitted form to run card finding and pack opening
         console.log("Attempting to save the following cards: ", randomCards);
         for (let i = 0; i < 5; i++) {
-         saveCard({variables: {cardId: randomCards[i]._id}});
+         saveCard({variables: {cardId: randomCards[i]._id, userId: localStorage.getItem('userId')}});
         }
         console.log(packJson.selectedPack);
         console.log("test does the code reach this line")
