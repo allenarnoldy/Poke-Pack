@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import LoginModal from './LoginModal'; 
-import Auth from '../utils/auth'; 
+import LoginModal from './LoginModal';
+import Auth from '../utils/auth';
 import '../App.css';
 
 const Navbar = () => {
@@ -17,22 +17,28 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div>
-        <Link to="/" id="logo">
-          <img src='.\pokpak_logo.svg' alt='PokePack!'/>
-        </Link>
+      <div className="logo-container">
+        <img src='./logo.jpeg' alt='PokePack' className="logo" />
       </div>
 
-      {/* If logged in, show Binder */}
+      {/* If logged in, show Crack-A-Pack & Binder */}
       <div className="nav-links">
         {Auth.loggedIn() && (
-          <div className="nav-item">
-            <h2>
-              <Link to="/Collection" className="nav-link">
-                Binder
-              </Link>
-            </h2>
-          </div>
+          <>
+            {/* Crack-A-Pack Link */}
+            <div className="nav-item">
+              <h2>
+                <Link to="/" className="nav-link">Crack-A-Pack</Link>
+              </h2>
+            </div>
+
+            {/* Binder Link */}
+            <div className="nav-item">
+              <h2>
+                <Link to="/Collection" className="nav-link">Binder</Link>
+              </h2>
+            </div>
+          </>
         )}
 
         {Auth.loggedIn() ? (

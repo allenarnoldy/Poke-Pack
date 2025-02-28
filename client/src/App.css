@@ -17,8 +17,9 @@ nav {
     padding-left: 15px;
     padding-right: 15px;
     background-color: #F44336;
-    box-shadow: 0 6px 6px rgb(91, 90, 90);
+    box-shadow: 0 8px 8px black;
     align-items: center;
+    height: 150px;
 }
 
 nav h1 {
@@ -35,7 +36,7 @@ nav h1 {
     display: flex;
     align-items: center;
     gap: 15px;
-    /* Space between links */
+    margin-left: auto;
 }
 
 /* Navigation items */
@@ -151,6 +152,21 @@ button:hover {
     height: auto;
 }
 
+.logo-container {
+    position: absolute;
+    top: 60px; /* Adjust based on navbar height */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; /* Ensures it stays above other content */
+  }
+  
+  .logo {
+    width: 200px; /* Adjust as needed */
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
     nav {
