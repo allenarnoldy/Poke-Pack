@@ -43,8 +43,8 @@ export const DELETE_CARD = gql`
     removeCardFromBinder(cardId: $cardId) {
       _id
       username
-      savedCards {
-        id
+      binder {
+        _id
         name
         level
         types
@@ -61,8 +61,8 @@ export const SAVE_CARD = gql`
     saveCardToBinder(cardID: $cardId) {
       _id
       username
-      savedCards {
-        id
+      binder {
+        _id
         name
         level
         types
