@@ -40,17 +40,17 @@ const OpenPack = () => {
         <>
             <div className="pack-container">
                 <form method="post" onSubmit={handleSubmit}>
-                    <h1>It's time to crack a pack!</h1>
-                    <label>
-                        Choose your Pack!
-                        <select name="selectedPack" id="pack-list" onChange={Form}>
+                    <h1 className="pack-header">TIME TO CRACK A PACK</h1>
+                    <label className="pack-list">
+                        Choose your Pack!<br></br>
+                        <select  className="pack-list" name="selectedPack" id="pack-list" onChange={Form}>
                             <option value={undefined}>No Pack</option>
                             <option value={"151"}>Base Set 01</option>
                             <option value={"bs2"}>Base Set 02</option>
                             <option value={"rbycode"}>EX Ruby & Sapphire</option>
                         </select>
                     </label>
-                    <button type="submit">Submit</button>
+                    <button className="pack-button "type="submit">Submit</button>
                 </form>
                 
             </div>

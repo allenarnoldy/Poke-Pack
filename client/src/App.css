@@ -248,3 +248,62 @@ button:hover {
 .hover-data {
     display: none;
 }
+
+/* PACK CHOICE */
+.pack-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f7fa;
+    padding: 20px;
+}
+  
+form {
+    background: #f0eded;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.pack-header {
+    font-size: 24px;
+    font-weight: bolder;
+    color: #040404;
+    margin-bottom: 20px;
+    text-transform: uppercase; 
+}
+  
+.pack-list {
+    font-size: 16px;
+    color: #555555;
+    background-color: #f9f9f9;
+    padding: 10px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+  
+.pack-list:hover {
+    border-color: #777777;
+}
+  
+.pack-button {
+    background-color: #1b65db; 
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+  
+.pack-button:hover {
+    background-color: #f70202;
+}
