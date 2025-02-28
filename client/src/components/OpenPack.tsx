@@ -1,12 +1,14 @@
 import DisplayBooster from "./DisplayBooster";
-import { useQuery, useLazyQuery } from "@apollo/client";
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 
 import { OPEN_SINGLE_PACK } from "../utils/queries";
 import { useState } from "react";
+import { SAVE_CARD } from "../utils/mutations.js";
 
 
 const OpenPack = () => {
     const [ getPack, {loading, data} ] = useLazyQuery(OPEN_SINGLE_PACK);
+    const [saveCard] = useMutation(SAVE_CARD);
     const [selectedPack, setSelectedPack] = useState<string | null>(null);
     
     // const cards = data?.openSinglePack || [];
@@ -16,14 +18,21 @@ const OpenPack = () => {
         setSelectedPack(e.target.value);
     }
 
-    function handleSubmit(event: any) {
+    async function handleSubmit(event: any) {
         event.preventDefault();
         const form = event.target;
         const packSelect = new FormData(form);
         const packJson = Object.fromEntries(packSelect.entries())
-        getPack({variables: {setName: packJson.selectedPack}});
+        const { data: packData } = await getPack({variables: {setName: packJson.selectedPack}});
+        const randomCards = packData?.openSinglePack || [];
         // TODO use 'selectedPack' from submitted form to run card finding and pack opening
+        console.log("Attempting to save the following cards: ", randomCards);
+        for (let i = 0; i < 5; i++) {
+         saveCard({variables: {cardId: randomCards[i]._id}});
+        }
         console.log(packJson.selectedPack);
+        console.log("test does the code reach this line")
+        console.log(randomCards);
     };
     console.log(data);
     // TODO current list values to be replaced with for loop that uses a passed in array to populate the options

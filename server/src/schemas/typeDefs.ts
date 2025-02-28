@@ -10,6 +10,7 @@ const typeDefs = gql`
     _id: ID!
     username: String!
     email: String!
+    binder: [Card]
   }
 
   type Auth {
@@ -18,6 +19,7 @@ const typeDefs = gql`
   }
 
   type Card {
+    _id: ID
     name: String
     level: String
     types: [String]
@@ -27,8 +29,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    saveCardToBinder: String
-    removeCardFromBinder: String
+    saveCardToBinder(cardID: ID!): User 
+    removeCardFromBinder: ID!
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
   }
