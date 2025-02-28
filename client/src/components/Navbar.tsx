@@ -17,8 +17,14 @@ const Navbar = () => {
 
   return (
     <nav>
-      <div className="logo-container">
-        <img src='./logo.jpeg' alt='PokePack' className="logo" />
+      {/* Left section: Slogan and logo */}
+      <div className="nav-left">
+        <div className="nav-slogan">
+          <span>Gotta Collect 'em All</span>
+        </div>
+        <div className="logo-container">
+          <img src='./logo.jpeg' alt='PokePack' className="logo" />
+        </div>
       </div>
 
       {/* If logged in, show Crack-A-Pack & Binder */}

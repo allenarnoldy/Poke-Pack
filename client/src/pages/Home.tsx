@@ -16,8 +16,8 @@ const Home = () => {
         <div className="splash-container">
           <div className="splash-content">
             <h2>All your favorites, just a PokéPack away!</h2>
-            <img src='./imgSplash.png' alt='Choose Your Pack!' className="splash-image" />
             <p>Sign up now and start your card collection today!!</p>
+            <img src="./imgSplash.png" alt="Poke Cards" className="splash-image" />
           </div>
         </div>
       )}
