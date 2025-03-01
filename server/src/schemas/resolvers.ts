@@ -60,7 +60,7 @@ const resolvers = {
         
         removeCardFromBinder: async (_parent: any, _args: any, _context: any) => {
             const updateUser = await UserModel.findOneAndUpdate(
-                { _id: _args.userId },
+                { binder: _args.cardId },
                 { $pull: { binder: _args.cardId } },
                 { new: true }
             );

@@ -30,7 +30,7 @@ const typeDefs = gql`
 
   type Mutation {
     saveCardToBinder(cardID: ID!): User 
-    removeCardFromBinder: ID!
+    removeCardFromBinder(cardId: ID!): User
     addUser(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
   }

@@ -256,7 +256,7 @@ button:hover {
 }
 
 .pokemon-card {
-    width: 200px; /* Increase this to make the cards bigger */
+    width: 400px; /* Increase this to make the cards bigger */
     height: auto; /* Maintain aspect ratio */
     padding: 10px;
     background-color: white;
