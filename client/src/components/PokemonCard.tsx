@@ -1,13 +1,14 @@
 import { Pokemon } from "../interface/Pokemon";
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import ListGroup from 'react-bootstrap/ListGroup';
-import { Button } from 'react-bootstrap';
 
 interface PokeProps {
     pokemon: Pokemon
+    onDelete: (_id: string) => void
 }
 
-const PokemonCard: React.FC<PokeProps> = ({ pokemon, onDelete }) => {
+const PokemonCard: React.FC<PokeProps> = ({ pokemon, onDelete }) => { 
+  console.log(pokemon._id)
   return (
     <Card style={{ width: '10rem' }}>
       <Card.Img className='pokemon-card' variant="top" src={pokemon.imageUrl} />
@@ -24,10 +25,10 @@ const PokemonCard: React.FC<PokeProps> = ({ pokemon, onDelete }) => {
       <Button 
         variant="danger" 
         className="btn-block"
-        onClick={() => onDelete(pokemon._id)}
-        >
-          Delete Card
-        </Button>
+        onClick={() => onDelete(pokemon._id)}  
+      >
+        Delete Card
+      </Button>
     </Card>
   );
 }
