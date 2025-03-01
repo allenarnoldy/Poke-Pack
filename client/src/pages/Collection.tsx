@@ -7,7 +7,10 @@ import Auth from "../utils/auth";
 
 const Collection = () => {
   const { loading, data, refetch } = useQuery(LOGIN_USER);
-  console.log(data);
+  console.log("this is the data", data);
+  if (data?.me.binder[0].imageUrl === null) {
+    window.location.reload();
+  };
 
   const [removeCardFromBinder] = useMutation(DELETE_CARD);
   const handleDeleteCard = async (cardId: string) => {
@@ -18,6 +21,7 @@ const Collection = () => {
     try {
       await removeCardFromBinder({ variables: { cardId: cardId } });
       refetch();
+      console.log("Card deleted");
     } catch (err) {
       console.error(err);
     }

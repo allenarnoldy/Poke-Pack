@@ -1,6 +1,4 @@
-import DisplayBooster from "./DisplayBooster";
 import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
-
 import { OPEN_SINGLE_PACK } from "../utils/queries";
 import { useState } from "react";
 import { SAVE_CARD } from "../utils/mutations.js";
@@ -12,7 +10,7 @@ const OpenPack = () => {
     const [selectedPack, setSelectedPack] = useState<string | null>(null);
     
     // const cards = data?.openSinglePack || [];
-
+    const [randomCards, setRandomCards] = useState([]);
 
     function Form(e: any) {
         setSelectedPack(e.target.value);
@@ -26,19 +24,20 @@ const OpenPack = () => {
         const { data: packData } = await getPack({variables: {setName: packJson.selectedPack}});
         const randomCards = packData?.openSinglePack || [];
         // TODO use 'selectedPack' from submitted form to run card finding and pack opening
-        console.log("Attempting to save the following cards: ", randomCards);
         for (let i = 0; i < 5; i++) {
          saveCard({variables: {cardId: randomCards[i]._id, userId: localStorage.getItem('userId')}});
         }
-        console.log(packJson.selectedPack);
-        console.log("test does the code reach this line")
-        console.log(randomCards);
+        setRandomCards(randomCards);
     };
-    console.log(data);
     // TODO current list values to be replaced with for loop that uses a passed in array to populate the options
     return (
         <>
             <div className="pack-container">
+                { randomCards.map((card: any) => (
+                    <div key={card._id} className="card">
+                        <img src={card.imageUrl} alt={card.name} />
+                    </div>
+                ))}
                 <form method="post" onSubmit={handleSubmit}>
                     <h1 className="pack-header">TIME TO CRACK A PACK</h1>
                     <label className="pack-list">

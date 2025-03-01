@@ -1,5 +1,5 @@
 export interface Pokemon {
-    id:string;
+    _id:string;
     name: string;
     level: string;
     types: string[];
