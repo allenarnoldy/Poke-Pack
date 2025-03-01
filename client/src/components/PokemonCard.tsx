@@ -1,12 +1,13 @@
 import { Pokemon } from "../interface/Pokemon";
 import { Card } from 'react-bootstrap'
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Button } from 'react-bootstrap';
 
 interface PokeProps {
     pokemon: Pokemon
 }
 
-const PokemonCard: React.FC<PokeProps> = ({ pokemon }) => {
+const PokemonCard: React.FC<PokeProps> = ({ pokemon, onDelete }) => {
   return (
     <Card style={{ width: '10rem' }}>
       <Card.Img className='pokemon-card' variant="top" src={pokemon.imageUrl} />
@@ -20,6 +21,13 @@ const PokemonCard: React.FC<PokeProps> = ({ pokemon }) => {
             {pokemon.nickname? <ListGroup.Item>Nickname: {pokemon.nickname}</ListGroup.Item>:""}
           </ListGroup>
           </div>
+      <Button 
+        variant="danger" 
+        className="btn-block"
+        onClick={() => onDelete(pokemon._id)}
+        >
+          Delete Card
+        </Button>
     </Card>
   );
 }

@@ -1,15 +1,15 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const LOGIN_USER = gql`
-mutation LoginUser($username: String!, $password: String!) {
-  login(username: $username, password: $password) {
-    token
-    user {
-      _id
-      username
+  mutation LoginUser($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      token
+      user {
+        _id
+        username
+      }
     }
   }
-}
 `;
 
 export const ADD_USER = gql`
@@ -42,16 +42,6 @@ export const DELETE_CARD = gql`
   mutation removeCardFromBinder($cardId: ID!) {
     removeCardFromBinder(cardId: $cardId) {
       _id
-      username
-      binder {
-        _id
-        name
-        level
-        types
-        setName
-        rarity
-        imageUrl
-      }
     }
   }
 `;
