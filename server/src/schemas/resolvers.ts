@@ -40,19 +40,20 @@ const resolvers = {
 
         me: async (_: any, __: any, { user }: Context) => {
             if (!user) return null;
-            return await UserModel.findById(user._id);
+            return await UserModel.findById(user._id).populate('binder');
         },
     },
 
     Mutation: {
         saveCardToBinder: async (_parent: any, _args: any, _context: any) => {
-            
+            console.log("_args", _args);
             const updateUser = await UserModel.findOneAndUpdate(
-                { _id: _args.userId },
+                { _id: _context.user._id },
                 { $push: { binder: _args.cardID } },
                 { new: true }
             );
-            
+            console.log("_context.user", _context.user);
+            console.log("updateUser", updateUser);
             return updateUser;
             
         },
