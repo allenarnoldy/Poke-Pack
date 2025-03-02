@@ -8,7 +8,7 @@ export interface CardDocument extends Document {
   setName: string;
   rarity: string;
   imageUrl: string;
-  nickname?: string; 
+  nickname?: string;
 }
 
 const cardSchema = new Schema<CardDocument>(
@@ -23,7 +23,7 @@ const cardSchema = new Schema<CardDocument>(
     },
     level: {
       type: String,
-      
+
     },
     types: {
       type: [String],

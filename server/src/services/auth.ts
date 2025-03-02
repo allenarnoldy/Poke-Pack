@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { AuthenticationError } from 'apollo-server-errors'; 
+import { AuthenticationError } from 'apollo-server-errors';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -27,9 +27,9 @@ export const authenticateToken = ({ req }: { req: any }) => {
     if (!secretKey) throw new Error('JWT secret key is not defined');
 
     const { data } = jwt.verify(token, secretKey, { maxAge: '2h' }) as { data: UserPayload };
-    
+
     return { ...req, user: data }; // Return new request object with user data
-    } catch (err) {
+  } catch (err) {
     if (err instanceof Error) {
       console.log(process.env.JWT_SECRET_KEY);
       console.error('Invalid token:', err.message);

@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import LoginModal from './LoginModal';
-import Auth from '../utils/auth';
-import '../App.css';
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import LoginModal from "./LoginModal";
+import Auth from "../utils/auth";
+import "../App.css";
 
 const Navbar = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     Auth.logout(); // Logs out user and removes token
-    window.location.assign('/'); // Redirects to home after logout
+    window.location.assign("/"); // Redirects to home after logout
   };
 
   return (
@@ -23,7 +23,7 @@ const Navbar = () => {
           <span>Gotta Collect 'em All</span>
         </div>
         <div className="logo-container">
-          <img src='./logo.jpeg' alt='PokePack' className="logo" />
+          <img src="./logo.jpeg" alt="PokePack" className="logo" />
         </div>
       </div>
 
@@ -34,14 +34,18 @@ const Navbar = () => {
             {/* Crack-A-Pack Link */}
             <div className="nav-item">
               <h2>
-                <Link to="/" className="nav-link">Crack-A-Pack</Link>
+                <Link to="/" className="nav-link">
+                  Crack-A-Pack
+                </Link>
               </h2>
             </div>
 
             {/* Binder Link */}
             <div className="nav-item">
               <h2>
-                <Link to="/Collection" className="nav-link">Binder</Link>
+                <Link to="/Collection" className="nav-link">
+                  Binder
+                </Link>
               </h2>
             </div>
           </>
