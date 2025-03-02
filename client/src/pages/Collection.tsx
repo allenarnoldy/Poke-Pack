@@ -34,17 +34,19 @@ const Collection = () => {
     }
   };
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+//   if (loading) {
+//     return <h2>Loading...</h2>;
+//   }
 
   const hasCards = data?.me.binder?.length > 0;
-
+  hasCards? console.log(`WE HAVE CARDS HERE THEY ARE: ${data.me.binder}`) : console.log("No cards found");
   return (
     <>
       <h1 className="binder-header">Your Binder</h1>
       <div className="binder">
-        {hasCards ? (
+        {
+        loading ? <h2>LOADING</h2> : (
+        hasCards ? (
           data.me.binder.map((card: any) => (
             <PokemonCard
               key={card.id}
@@ -54,7 +56,7 @@ const Collection = () => {
           ))
         ) : (
           <h2>No cards in binder</h2>
-        )}
+        ))}
       </div>
     </>
   );
