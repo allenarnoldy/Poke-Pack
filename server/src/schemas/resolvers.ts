@@ -21,7 +21,6 @@ const resolvers = {
     Query: {
         openSinglePack: async (_parent: any, args: any, _context: any) => {
             const selectedSet = args.setName || 151;
-            console.log(selectedSet)
 
             const cards = await Card.find({ "setName": selectedSet });
 
@@ -34,7 +33,6 @@ const resolvers = {
                 const randomCard = cards[Math.floor(Math.random() * cards.length)];
                 randomCards.push(randomCard);
             }
-            console.log("All the cards!", randomCards);
             return randomCards;
         },
 
@@ -46,16 +44,12 @@ const resolvers = {
 
     Mutation: {
         saveCardToBinder: async (_parent: any, _args: any, _context: any) => {
-            console.log("_args", _args);
             const updateUser = await UserModel.findOneAndUpdate(
                 { _id: _context.user._id },
                 { $push: { binder: _args.cardID } },
                 { new: true }
             );
-            console.log("_context.user", _context.user);
-            console.log("updateUser", updateUser);
             return updateUser;
-
         },
 
         removeCardFromBinder: async (_parent: any, _args: any, _context: any) => {
