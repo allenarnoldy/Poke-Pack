@@ -53,7 +53,7 @@ const OpenPack = () => {
                             Choose your Pack!<br></br>
                             <select className="pack-list" name="selectedPack" id="pack-list" onChange={Form}>
                                 <option value={undefined}>No Pack</option>
-                                <option value={"151"}>Base Set 01</option>
+                                <option value={"151"}>Scarlet & Violet - 151</option>
                                 <option value={"bs2"}>Base Set 02</option>
                                 <option value={"rbycode"}>EX Ruby & Sapphire</option>
                             </select>
