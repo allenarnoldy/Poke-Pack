@@ -3,14 +3,13 @@ import { OPEN_SINGLE_PACK } from "../utils/queries";
 import { useEffect, useState } from "react";
 import { SAVE_CARD } from "../utils/mutations.js";
 
-
 const OpenPack = () => {
-    const [ getPack, {loading, data} ] = useLazyQuery(OPEN_SINGLE_PACK);
-    const [saveCard] = useMutation(SAVE_CARD);
-    const [selectedPack, setSelectedPack] = useState<string | null>(null);
-    
-    // const cards = data?.openSinglePack || [];
-    const [randomCards, setRandomCards] = useState([]);
+  const [getPack, { loading, data }] = useLazyQuery(OPEN_SINGLE_PACK);
+  const [saveCard] = useMutation(SAVE_CARD);
+  const [selectedPack, setSelectedPack] = useState<string | null>(null);
+
+  // const cards = data?.openSinglePack || [];
+  const [randomCards, setRandomCards] = useState([]);
 
     function Form(e: any) {
         setSelectedPack(e.target.value);

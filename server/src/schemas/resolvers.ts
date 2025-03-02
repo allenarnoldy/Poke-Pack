@@ -6,7 +6,7 @@ import { Card } from '../models/index.js';
 
 dotenv.config();
 
-interface User extends Document{
+interface User extends Document {
     _id: string;
     username: string;
     email: string;
@@ -20,7 +20,7 @@ interface Context {
 const resolvers = {
     Query: {
         openSinglePack: async (_parent: any, args: any, _context: any) => {
-            const selectedSet=args.setName || 151;
+            const selectedSet = args.setName || 151;
             console.log(selectedSet)
 
             const cards = await Card.find({ "setName": selectedSet });
@@ -55,9 +55,9 @@ const resolvers = {
             console.log("_context.user", _context.user);
             console.log("updateUser", updateUser);
             return updateUser;
-            
+
         },
-        
+
         removeCardFromBinder: async (_parent: any, _args: any, _context: any) => {
             const updateUser = await UserModel.findOneAndUpdate(
                 { binder: _args.cardId },
@@ -69,22 +69,22 @@ const resolvers = {
 
         addUser: async (_: any, { username, email, password }: { username: string, email: string, password: string }) => {
             console.log('Received input:', { username, email, password });
-            
+
             if (!username || !email || !password) {
                 throw new Error('All fields are required!');
             }
-        
+
             // Check if the username already exists
             const existingUser = await UserModel.findOne({ username });
             if (existingUser) {
                 throw new Error('Username already taken');
             }
-        
+
             try {
                 // Create the new user
                 const user = await new UserModel({ username, email, password }).save();
                 if (!user || !user._id) throw new Error("User creation failed");
-        
+
                 const token = signToken(user.email, user._id.toString());
                 return { token, user };
             } catch (err) {
@@ -95,15 +95,15 @@ const resolvers = {
 
         login: async (_: any, { username, password }: { username: string, password: string }) => {
             if (!username || !password) throw new Error('Username and password are required');
-        
+
             try {
                 // Find the user by username, not email
                 const user = await UserModel.findOne({ username }) as User | null;
                 if (!user) throw new Error('User not found');
-        
+
                 const isValid = await user.isCorrectPassword(password);
                 if (!isValid) throw new Error('Invalid credentials');
-        
+
                 const token = signToken(user.email, user._id.toString());
                 return { token, user };
             } catch (err) {
@@ -111,7 +111,7 @@ const resolvers = {
                 throw new Error('Error logging in');
             }
         },
-        
+
     },
 };
 

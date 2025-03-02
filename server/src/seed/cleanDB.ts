@@ -1,4 +1,4 @@
-import { Card }from '../models/index.js';
+import { Card } from '../models/index.js';
 import process from 'process';
 
 const cleanDB = async (): Promise<void> => {
