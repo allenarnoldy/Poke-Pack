@@ -7,7 +7,6 @@ body {
     margin: 0;
     font-family: 'Arial', sans-serif;
     background-color: #f4f7fc;
-    overflow: hidden;
 }
 
 /* NAVIGATION BAR */
@@ -207,7 +206,6 @@ button:hover {
 #packForm {
     z-index: 100;
     position: relative;
-    bottom: 80px;
 }
 .packCard {
     position: absolute;
@@ -215,8 +213,8 @@ button:hover {
     left: 0px;
     top: -140px;
     transform: translateX(-50%);
-    transition: top .3s, left .5s, rotate .5s;
-    transition-delay: 1s;
+    transition: top .3s, left .5s, rotate .5s, transform .2s;
+    transition-timing-function: ease-in-out;
 }
 
 .packCard img {
@@ -227,7 +225,6 @@ button:hover {
     position: absolute;
     margin-left: auto;
     margin-right: auto;
-    transition: 0.5s ease-in-out;
 }
 
 .packCard.open:nth-child(1) {
@@ -263,6 +260,11 @@ button:hover {
     rotate: 20deg;
     top: -450px;
     z-index: 1;
+}
+
+.packCard.open:hover {
+    transform: translateX(-50%) translateY(-20%) scale(1.2);
+    z-index: 20;
 }
 
 /* POKEMON CARD */
@@ -314,7 +316,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-top: 30rem;
+  margin-top: 27rem;
 }
 
 form {
