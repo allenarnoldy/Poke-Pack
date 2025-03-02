@@ -144,7 +144,7 @@ button:hover {
 
 .splash-container {
   position: relative;
-  background-image: url("./background.jpeg");
+  background-image: url("../public/background.jpeg");
   background-size: cover;
   /* Ensures the image covers the entire container */
   background-position: center;
