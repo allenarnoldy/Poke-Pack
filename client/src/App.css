@@ -4,9 +4,9 @@
 }
 
 body {
-  margin: 0;
-  font-family: "Arial", sans-serif;
-  background-color: #f4f7fc;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fc;
 }
 
 /* NAVIGATION BAR */
@@ -203,46 +203,68 @@ button:hover {
 }
 
 /* BOOSTER PACK */
+#packForm {
+    z-index: 100;
+    position: relative;
+}
 .packCard {
-  position: absolute;
+    position: absolute;
+    rotate: 0deg;
+    left: 0px;
+    top: -140px;
+    transform: translateX(-50%);
+    transition: top .3s, left .5s, rotate .5s, transform .2s;
+    transition-timing-function: ease-in-out;
 }
 
-.packCard .cardImage {
-  width: 18em;
+.packCard img {
+    width: 200px;
 }
 
 .booster {
-  transition: 0.5s ease-in-out;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.booster :nth-child(1) {
-  translate: -300px;
-  rotate: 0;
-  z-index: 1;
+.packCard.open:nth-child(1) {
+    left: -300px;
+    rotate: -20deg;
+    top: -520px;
+    z-index: 1;
 }
 
-.booster :nth-child(2) {
-  translate: -150px;
-  rotate: 0;
-  z-index: 2;
+.packCard.open:nth-child(2) {
+    left: -150px;
+    rotate: -10deg;
+    top: -540px;
+    z-index: 2;
 }
 
-.booster :nth-child(3) {
-  translate: 0px;
-  rotate: 0;
-  z-index: 3;
+.packCard.open:nth-child(3) {
+    left: 0px;
+    rotate: 0deg;
+    top: -540px;
+    z-index: 3;
 }
 
-.booster :nth-child(4) {
-  translate: 150px;
-  rotate: 0;
-  z-index: 2;
+.packCard.open:nth-child(4) {
+    left: 150px;
+    rotate: 10deg;
+    top: -505px;
+    z-index: 2;
 }
 
-.booster :nth-child(5) {
-  translate: 300px;
-  rotate: 0;
-  z-index: 1;
+.packCard.open:nth-child(5) {
+    left: 300px;
+    rotate: 20deg;
+    top: -450px;
+    z-index: 1;
+}
+
+.packCard.open:hover {
+    transform: translateX(-50%) translateY(-20%) scale(1.2);
+    z-index: 20;
 }
 
 /* POKEMON CARD */
@@ -294,7 +316,7 @@ button:hover {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  margin-top: 30rem;
+  margin-top: 27rem;
 }
 
 form {
