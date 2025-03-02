@@ -8,6 +8,9 @@ As an inspiring Pokemon master<br>
 I want to open virtual cards everyday <br>
 So that I can add and remove them from my binder <br>
 
+## Screenshot
+![alt text](<./client/public/LandingPage.png>)
+
 
 ## Table of Contents
 - [Description](#description)

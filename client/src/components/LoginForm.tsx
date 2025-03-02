@@ -1,12 +1,15 @@
-import { useState } from 'react';
-import type { ChangeEvent, FormEvent } from 'react';
-import { Form, Button, Alert } from 'react-bootstrap';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
-  const [userFormData, setUserFormData] = useState({ username: '', password: '' });
+  const [userFormData, setUserFormData] = useState({
+    username: "",
+    password: "",
+  });
   const [validated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
@@ -31,12 +34,15 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
     try {
       // Execute the loginUser mutation with the form data
       const { data } = await loginUser({
-        variables: { username: userFormData.username, password: userFormData.password },
+        variables: {
+          username: userFormData.username,
+          password: userFormData.password,
+        },
       });
 
       if (data) {
         Auth.login(data.login.token);
-        localStorage.setItem('userId', data.login.user._id);
+        localStorage.setItem("userId", data.login.user._id);
         handleModalClose();
       }
     } catch (err) {
@@ -45,15 +51,20 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
     }
 
     setUserFormData({
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     });
   };
 
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert || Boolean(error)} variant="danger">
+        <Alert
+          dismissible
+          onClose={() => setShowAlert(false)}
+          show={showAlert || Boolean(error)}
+          variant="danger"
+        >
           Something went wrong with your login credentials!
         </Alert>
 
@@ -64,10 +75,12 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
             placeholder="Your username"
             name="username"
             onChange={handleInputChange}
-            value={userFormData.username || ''}
+            value={userFormData.username || ""}
             required
           />
-          <Form.Control.Feedback type="invalid">Username is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Username is required!
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -77,12 +90,18 @@ const LoginForm = ({ handleModalClose }: { handleModalClose: () => void }) => {
             placeholder="Your password"
             name="password"
             onChange={handleInputChange}
-            value={userFormData.password || ''}
+            value={userFormData.password || ""}
             required
           />
-          <Form.Control.Feedback type="invalid">Password is required!</Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">
+            Password is required!
+          </Form.Control.Feedback>
         </Form.Group>
-        <Button disabled={!(userFormData.username && userFormData.password)} type="submit" variant="success">
+        <Button
+          disabled={!(userFormData.username && userFormData.password)}
+          type="submit"
+          variant="success"
+        >
           Submit
         </Button>
       </Form>
