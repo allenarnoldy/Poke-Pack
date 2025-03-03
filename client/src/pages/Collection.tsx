@@ -38,7 +38,7 @@ const Collection = () => {
   const hasCards = data?.me?.binder?.length > 0;
 
   return (
-    <>
+    <div className="splash-container">
       <h1 className="binder-header">Your Binder</h1>
       <div className="binder">
         {hasCards ? (
@@ -50,10 +50,10 @@ const Collection = () => {
             />
           ))
         ) : (
-          <h2>No cards in binder</h2>
+          <h2>No Cards In Binder</h2>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

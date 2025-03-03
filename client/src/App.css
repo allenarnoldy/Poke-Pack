@@ -4,9 +4,9 @@
 }
 
 body {
-    margin: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fc;
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #f4f7fc;
 }
 
 /* NAVIGATION BAR */
@@ -147,18 +147,21 @@ button:hover {
 
 .splash-container {
   position: relative;
-  background: linear-gradient(to right, transparent,rgba(0, 0, 0, 0.748),transparent),url("../public/background.jpeg");
+  background: linear-gradient(
+      to right,
+      transparent,
+      rgba(0, 0, 0, 0.748),
+      transparent
+    ),
+    url("../public/background.jpeg");
   background-size: cover;
-  /* Ensures the image covers the entire container */
   background-position: center;
-  /* Centers the image */
   min-height: calc(100vh - 150px);
-  /* Makes the container take full height minus the navbar height */
   padding-top: 150px;
-  /* Adds space to avoid covering navbar */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   color: white;
   z-index: 1;
 }
@@ -201,31 +204,32 @@ button:hover {
 }
 
 .binder-header {
-  padding: 30px 0px 0px 20px;
-  font-size: 30px;
+  padding: 0px 15px 0px 20px;
+  font-size: 35px;
+  font-weight: bolder;
   margin-bottom: 50px;
 }
 
 /* BOOSTER PACK */
 
 #packForm {
-    z-index: 100;
-    position: relative;
-    margin-bottom: 0;
-    margin-top: auto;
+  z-index: 100;
+  position: relative;
+  margin-bottom: 0;
+  margin-top: auto;
 }
 .packCard {
-    position: absolute;
-    rotate: 0deg;
-    left: 0px;
-    top: -140px;
-    transform: translateX(-50%) scale(0.2);
-    transition: top .3s, left .5s, rotate .5s, transform .2s;
-    transition-timing-function: ease-in-out;
+  position: absolute;
+  rotate: 0deg;
+  left: 0px;
+  top: -140px;
+  transform: translateX(-50%) scale(0.2);
+  transition: top 0.3s, left 0.5s, rotate 0.5s, transform 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 .packCard img {
-    width: 200px;
+  width: 200px;
 }
 
 .booster {
@@ -236,46 +240,46 @@ button:hover {
     z-index: 20;
 }
 .packCard.open {
-  transform: translateX(-50%) scale(.9);
+  transform: translateX(-50%) scale(0.9);
 }
 .packCard.open:nth-child(1) {
-    left: -300px;
-    rotate: -20deg;
-    top: -520px;
-    z-index: 1;
+  left: -300px;
+  rotate: -20deg;
+  top: -520px;
+  z-index: 1;
 }
 
 .packCard.open:nth-child(2) {
-    left: -150px;
-    rotate: -10deg;
-    top: -540px;
-    z-index: 2;
+  left: -150px;
+  rotate: -10deg;
+  top: -540px;
+  z-index: 2;
 }
 
 .packCard.open:nth-child(3) {
-    left: 0px;
-    rotate: 0deg;
-    top: -540px;
-    z-index: 3;
+  left: 0px;
+  rotate: 0deg;
+  top: -540px;
+  z-index: 3;
 }
 
 .packCard.open:nth-child(4) {
-    left: 150px;
-    rotate: 10deg;
-    top: -505px;
-    z-index: 2;
+  left: 150px;
+  rotate: 10deg;
+  top: -505px;
+  z-index: 2;
 }
 
 .packCard.open:nth-child(5) {
-    left: 300px;
-    rotate: 20deg;
-    top: -450px;
-    z-index: 1;
+  left: 300px;
+  rotate: 20deg;
+  top: -450px;
+  z-index: 1;
 }
 
 .packCard.open:hover {
-    transform: translateX(-50%) translateY(-20%) scale(1.2);
-    z-index: 220;
+  transform: translateX(-50%) translateY(-20%) scale(1.2);
+  z-index: 220;
 }
 
 /* POKEMON CARD */
