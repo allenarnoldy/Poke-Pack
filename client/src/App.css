@@ -102,7 +102,10 @@ nav h1 {
   text-align: center;
   margin: 20px;
 }
-
+.modal-content form{
+  width: 100%;
+  max-width: 400px;
+}
 .modal-content h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -189,6 +192,7 @@ button:hover {
   width: 200px;
   /* Adjust as needed */
   height: 200px;
+  position: relative;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -229,10 +233,11 @@ button:hover {
 }
 
 .booster {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  bottom: 4em;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 4em;
+    z-index: 20;
 }
 .packCard.open {
   transform: translateX(-50%) scale(0.9);
@@ -375,6 +380,18 @@ form {
 
 .pack-button:hover {
   background-color: #f70202;
+}
+button:disabled {
+  background-color: #ccc;  
+  color: #666;             
+  cursor: default;
+   
+}
+
+button:disabled:hover {
+  background-color: #ccc;  
+  color: #666;             
+  cursor: default;
 }
 
 /* RESPONSIVE DESIGN */

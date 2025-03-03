@@ -28,15 +28,18 @@ const OpenPack = () => {
         const packSelect = new FormData(form);
         const packJson = Object.fromEntries(packSelect.entries())
         const { data: packData } = await getPack({ variables: { setName: packJson.selectedPack } });
-        const randomCards = packData?.openSinglePack || []; // TODO change back to '[]' once done testing
-        // TODO use 'selectedPack' from submitted form to run card finding and pack opening
+        const pack = packData?.openSinglePack || [];
+        console.log(pack)
+        // use 'selectedPack' from submitted form to run card finding and pack opening
         for (let i = 0; i < 5; i++) {
-            saveCard({ variables: { cardId: randomCards[i]._id, userId: localStorage.getItem('userId') } });
+            saveCard({ variables: { cardId: pack[i]._id, userId: localStorage.getItem('userId') } });
         }
-        setRandomCards(randomCards);
+        setRandomCards(pack);
         setTimeout(animatePack, 1000);
+        (document.getElementById("pack-button") as HTMLButtonElement).disabled = true; 
     };
-    // TODO current list values to be replaced with for loop that uses a passed in array to populate the options
+
+
     return (
         <>
             <div className="pack-container splash-container">
@@ -58,7 +61,7 @@ const OpenPack = () => {
                                 <option value={"rbycode"}>EX Ruby & Sapphire</option>
                             </select>
                         </label>
-                        <button className="pack-button " type="submit">Submit</button>
+                        <button id="pack-button" className="pack-button " type="submit">Submit</button>
                     </form>
             </div>
         </>
